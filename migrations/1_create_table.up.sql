@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS artists (
+    id VARCHAR(50) PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender VARCHAR(6) NOT NULL,
+    artist_type VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS libraries(
+    id VARCHAR(50) PRIMARY KEY,
+    library_name VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS books(
+    id VARCHAR(50) PRIMARY KEY,
+    tittle VARCHAR(240) NOT NULL,
+    genre VARCHAR(20) NOT NULL,
+    artist_id VARCHAR(50) NOT NULL REFERENCES artists(id) ON DELETE CASCADE,
+    library_id VARCHAR(50) NOT NULL REFERENCES libraries(id) ON DELETE CASCADE
+);
